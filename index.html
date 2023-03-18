@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RTSP Stream Player with Capture</title>
+	<script src="https://cdn.jsdelivr.net/npm/@wcjiang/rtsp-player@2.3.3/dist/rtsp-player.js"></script>
+</head>
+<body>
+	<h1>RTSP Stream Player with Capture</h1>
+
+	<div>
+		<canvas id="canvas1"></canvas>
+		<button onclick="capture('canvas1')">Capture</button>
+	</div>
+
+	<div>
+		<canvas id="canvas2"></canvas>
+		<button onclick="capture('canvas2')">Capture</button>
+	</div>
+
+	<div>
+		<canvas id="canvas3"></canvas>
+		<button onclick="capture('canvas3')">Capture</button>
+	</div>
+
+	<div>
+		<canvas id="canvas4"></canvas>
+		<button onclick="capture('canvas4')">Capture</button>
+	</div>
+
+	<div>
+		<canvas id="canvas5"></canvas>
+		<button onclick="capture('canvas5')">Capture</button>
+	</div>
+
+	<div>
+		<canvas id="canvas6"></canvas>
+		<button onclick="capture('canvas6')">Capture</button>
+	</div>
+
+	<script>
+		var player1 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/0701');
+		player1.attach(document.getElementById('canvas1'));
+
+		var player2 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/0801');
+		player2.attach(document.getElementById('canvas2'));
+
+		var player3 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/1601');
+		player3.attach(document.getElementById('canvas3'));
+
+		var player4 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/0101');
+		player4.attach(document.getElementById('canvas4'));
+
+		var player5 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/0401');
+		player5.attach(document.getElementById('canvas5'));
+
+		var player6 = new RTSP.Player('rtsp://user:delhivery@456@110.172.159.66:8118/Streaming/channels/0201');
+		player6.attach(document.getElementById('canvas6'));
+
+		function capture(canvasId) {
+			var canvas = document.getElementById(canvasId);
+			var img = canvas.toDataURL('image/png');
+			var link = document.createElement('a');
+			link.download = 'capture.png';
+			link.href = img;
+			link.click();
+		}
+	</script>
+</body>
+</html>
